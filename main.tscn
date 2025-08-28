@@ -1,0 +1,192 @@
+[gd_scene load_steps=12 format=3 uid="uid://i4fephrflgsm"]
+
+[ext_resource type="Script" uid="uid://dxbc8enbukmdh" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bwkcaigtlmi5b" path="res://menuspikes.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cr50n5wgtc15f" path="res://spawnflowert.png" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://k58lrdtb107k" path="res://easvhs.ttf" id="4_1bvp3"]
+
+[sub_resource type="Gradient" id="Gradient_1bvp3"]
+colors = PackedColorArray(0.794979, 0.65968, 0, 1, 0.778437, 0.521934, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lquwl"]
+gradient = SubResource("Gradient_1bvp3")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1bvp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Animation" id="Animation_lquwl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spawnflower:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spawnflower:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1bvp3"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spawnflower:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(7.5, 7.5), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spawnflower:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lquwl"]
+_data = {
+&"RESET": SubResource("Animation_lquwl"),
+&"idle": SubResource("Animation_1bvp3")
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = -596.0
+offset_top = 329.0
+offset_right = 73.0
+offset_bottom = 1503.0
+rotation = -1.5708
+texture = SubResource("GradientTexture2D_lquwl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -583.0
+offset_top = 197.0
+offset_right = -286.0
+offset_bottom = 237.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_h2yge")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 651.0
+offset_top = -204.0
+offset_right = 977.0
+offset_bottom = -164.0
+rotation = 3.14159
+scale = Vector2(4, 4)
+texture = ExtResource("2_h2yge")
+stretch_mode = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_1bvp3")
+
+[node name="Multiplayer_Buttons" type="VBoxContainer" parent="."]
+offset_left = -517.0
+offset_top = 19.0
+offset_right = -229.0
+offset_bottom = 92.0
+
+[node name="Host" type="Button" parent="Multiplayer_Buttons"]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="Multiplayer_Buttons"]
+layout_mode = 2
+text = "Join"
+
+[node name="Multiplayer_Buttons2" type="VBoxContainer" parent="."]
+visible = false
+offset_left = -517.0
+offset_top = 19.0
+offset_right = -229.0
+offset_bottom = 92.0
+
+[node name="Host" type="TextEdit" parent="Multiplayer_Buttons2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "Address"
+
+[node name="Join" type="Button" parent="Multiplayer_Buttons2"]
+layout_mode = 2
+text = "Join"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="spawnflower" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+offset_left = 193.0
+offset_top = -22.0
+offset_right = 233.0
+offset_bottom = 18.0
+scale = Vector2(8, 8)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("3_h2yge")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = -563.0
+offset_top = -170.0
+offset_right = -75.0
+offset_bottom = -78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_1bvp3")
+theme_override_font_sizes/normal_font_size = 41
+text = "Computer Science Club Tech Demo"
+
+[node name="animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lquwl")
+}
+
+[connection signal="pressed" from="Multiplayer_Buttons/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Multiplayer_Buttons/Join" to="." method="_on_join_pressed"]
