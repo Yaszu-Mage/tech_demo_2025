@@ -30,6 +30,11 @@ func _on_host_pressed() -> void:
 	$video.play()
 	await $video.finished
 	$loading.visible = true
+	add_sibling(lobby.instantiate())
+	$Camera2D.enabled = false
+	self.visible = false
+
+@onready var lobby = preload("res://lobby.tscn")
 
 #This is the on join to set the address
 func _on_join_pressed() -> void:
@@ -39,3 +44,11 @@ func _on_join_pressed() -> void:
 
 func _on_real_join_pressed() -> void:
 	Lobby.join_game($Multiplayer_Buttons2/Host.text)
+	Sounds.play_sound("res://selectsfx.ogg",self)
+	$video.visible = true
+	$video.play()
+	await $video.finished
+	$loading.visible = true
+	add_sibling(lobby.instantiate())
+	$Camera2D.enabled = false
+	self.visible = false

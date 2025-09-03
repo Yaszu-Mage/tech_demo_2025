@@ -1,7 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://bwi4ex7h5l8dr"]
+[gd_scene load_steps=54 format=3 uid="uid://bwi4ex7h5l8dr"]
 
 [ext_resource type="Script" uid="uid://dgsuhf4xtlrc1" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cwe7y4l40ww0a" path="res://pm.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cvofa0elj7uer" path="res://knife.png" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 
@@ -360,7 +361,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(4, 11)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i3pqv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="sorcerer" type="CharacterBody2D"]
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -374,4 +389,25 @@ position_smoothing_enabled = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pylmc")
 animation = &"idle_up"
-frame_progress = 0.791705
+frame_progress = 0.197965
+
+[node name="knife" type="Node2D" parent="."]
+
+[node name="knife" type="Sprite2D" parent="knife"]
+top_level = true
+texture_filter = 1
+position = Vector2(0, 4)
+rotation = -2.45393
+texture = ExtResource("3_i3pqv")
+
+[node name="stabbox" type="Area2D" parent="knife"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knife/stabbox"]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="Marker2D" type="Marker2D" parent="knife"]
+position = Vector2(0, -16)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_i3pqv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i4fephrflgsm"]
+[gd_scene load_steps=14 format=3 uid="uid://i4fephrflgsm"]
 
 [ext_resource type="Script" uid="uid://dxbc8enbukmdh" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bwkcaigtlmi5b" path="res://menuspikes.png" id="2_h2yge"]
@@ -12,8 +12,6 @@ colors = PackedColorArray(0.794979, 0.65968, 0, 1, 0.778437, 0.521934, 1.92523e-
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lquwl"]
 gradient = SubResource("Gradient_1bvp3")
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1bvp3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
 content_margin_left = 4.0
@@ -128,9 +126,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
 stretch_mode = 1
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_1bvp3")
-
 [node name="Multiplayer_Buttons" type="VBoxContainer" parent="."]
 offset_left = -517.0
 offset_top = 19.0
@@ -214,3 +209,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
 
 [connection signal="pressed" from="Multiplayer_Buttons/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Multiplayer_Buttons/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Multiplayer_Buttons2/Join" to="." method="_on_real_join_pressed"]

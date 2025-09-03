@@ -9,5 +9,4 @@
 position = Vector2(192, 163)
 texture = ExtResource("1_fj7yv")
 
-[node name="player" parent="." instance=ExtResource("2_tlwt5")]
-position = Vector2(192, 163)
+[node name="sorcerer" parent="." instance=ExtResource("2_tlwt5")]

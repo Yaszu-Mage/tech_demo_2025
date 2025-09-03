@@ -3,39 +3,18 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var can_dash = 0
-@export var dash_cooldown = 0.5
-@export var dash_multiplier = 10
 @export var sprint_multiplier = 100.0
-@export var stab_cooldown = 0.2
 @onready var sprite = $AnimatedSprite2D
-@onready var knife_holder = $knife
-@onready var knife = $knife/knife
-
-var last_stabbed = 0
 var last_move = Vector2(0,1)
-func _ready() -> void:
-	pass
 func _physics_process(delta: float) -> void:
 	if (is_multiplayer_authority()):
 		movement(delta)
 		animation()
-		attacks()
-	else:
-		$Camera2D.enabled = false
-
-
-func attacks():
-	var is_stabbing = Input.is_action_just_pressed("stab")
-	if (is_stabbing and last_stabbed + (stab_cooldown*1000) <= Time.get_ticks_msec()):
-			knife.top_level = false
-			knife.position = $knife/Marker2D.position
-			last_stabbed = Time.get_ticks_msec()
-		
-
 
 func animation():
 	var input_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	var is_sprinting = Input.is_action_just_pressed("sprint")
+	var is_dashing = Input.is_action_just_pressed("dash")
 	if input_dir:
 		match input_dir:
 			Vector2(0,-1):
@@ -104,32 +83,25 @@ func animation():
 						#up left
 						sprite.play("idle_side")
 						sprite.flip_h = false
-			
-		
+
 func movement(delta: float):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if (get_multiplayer_authority() == int(name)):
-		var is_dashing = Input.is_action_just_pressed("dash")
 		var is_sprinting = Input.is_action_just_pressed("sprint")
 		var dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-		if (is_dashing and can_dash + (dash_cooldown*1000) <= Time.get_ticks_msec()):
+		if is_sprinting:
 			if dir:
-				velocity = dir * SPEED * dash_multiplier
-				can_dash = Time.get_ticks_msec()
+				velocity = dir * SPEED * sprint_multiplier
 				last_move = dir
-		else:
-			if is_sprinting:
-				if dir:
-					velocity = dir * SPEED * sprint_multiplier
-					last_move = dir
-				else:
-					velocity = Vector2.ZERO
 			else:
-				if dir:
-					velocity = dir * SPEED
-					last_move = dir
-				else:
-					velocity = Vector2.ZERO
+				velocity = Vector2.ZERO
+		else:
+			if dir:
+				velocity = dir * SPEED
+				last_move = dir
+			else:
+				velocity = Vector2.ZERO
 		
 		move_and_slide()
+	
