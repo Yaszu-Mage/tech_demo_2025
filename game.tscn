@@ -1,3 +1,238 @@
-[gd_scene format=3 uid="uid://c5v8cema6kqsc"]
+[gd_scene load_steps=11 format=3 uid="uid://c5v8cema6kqsc"]
+
+[ext_resource type="Script" uid="uid://yl51o0s1cp4r" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://tr4m2djn83pg" path="res://rose.png" id="2_7jktm"]
+[ext_resource type="Texture2D" uid="uid://ch3xb76j3xfy4" path="res://podeum.png" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://bbrn8kb8t8ae7" path="res://cactus.png" id="3_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dd3x4o6n8ge2e" path="res://lily.png" id="4_eow3j"]
+
+[sub_resource type="Animation" id="Animation_vef74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pod/pod1/flower:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pod/pod1/flower:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pod/pod1/flower:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7jktm")]
+}
+
+[sub_resource type="Animation" id="Animation_hve3p"]
+resource_name = "cactus"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pod/pod1/flower:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ryrav"), ExtResource("3_ryrav")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pod/pod1/flower:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(184, 423)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pod/pod1/flower:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_mfdv2"]
+resource_name = "lily"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pod/pod1/flower:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_eow3j"), ExtResource("4_eow3j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pod/pod1/flower:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(179, 428)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pod/pod1/flower:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_j5wjh"]
+resource_name = "rose"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pod/pod1/flower:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(177, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pod/pod1/flower:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.0949999, 0.0906)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pod/pod1/flower:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7jktm")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iotsf"]
+_data = {
+&"RESET": SubResource("Animation_vef74"),
+&"cactus": SubResource("Animation_hve3p"),
+&"lily": SubResource("Animation_mfdv2"),
+&"rose": SubResource("Animation_j5wjh")
+}
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_80nbo")
+
+[node name="lobby" type="Node2D" parent="."]
+
+[node name="pod2" type="AnimationPlayer" parent="lobby"]
+libraries = {
+&"": SubResource("AnimationLibrary_iotsf")
+}
+
+[node name="pod1" type="Sprite2D" parent="lobby/pod2"]
+texture_filter = 1
+position = Vector2(480, 481)
+scale = Vector2(2, 2)
+texture = ExtResource("2_e2o6t")
+
+[node name="flower" type="Sprite2D" parent="lobby/pod2"]
+texture = ExtResource("2_7jktm")
+
+[node name="pod3" type="AnimationPlayer" parent="lobby"]
+libraries = {
+&"": SubResource("AnimationLibrary_iotsf")
+}
+
+[node name="pod1" type="Sprite2D" parent="lobby/pod3"]
+texture_filter = 1
+position = Vector2(794, 476)
+scale = Vector2(2, 2)
+texture = ExtResource("2_e2o6t")
+
+[node name="flower" type="Sprite2D" parent="lobby/pod3"]
+texture = ExtResource("2_7jktm")
+
+[node name="pod4" type="AnimationPlayer" parent="lobby"]
+libraries = {
+&"": SubResource("AnimationLibrary_iotsf")
+}
+
+[node name="pod1" type="Sprite2D" parent="lobby/pod4"]
+texture_filter = 1
+position = Vector2(1037, 493)
+scale = Vector2(2, 2)
+texture = ExtResource("2_e2o6t")
+
+[node name="flower" type="Sprite2D" parent="lobby/pod4"]
+texture = ExtResource("2_7jktm")
+
+[node name="pod" type="Node2D" parent="lobby"]
+
+[node name="pod1" type="AnimationPlayer" parent="lobby/pod"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_iotsf")
+}
+
+[node name="pod1" type="Sprite2D" parent="lobby/pod/pod1"]
+texture_filter = 1
+position = Vector2(181, 488)
+scale = Vector2(2, 2)
+texture = ExtResource("2_e2o6t")
+
+[node name="flower" type="Sprite2D" parent="lobby/pod/pod1"]
+texture = ExtResource("2_7jktm")
